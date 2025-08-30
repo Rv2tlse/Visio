@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cours de maths en visio – Spécial Lycéens</title>
+  <meta name="description" content="Cours particuliers de mathématiques pour lycéens. Visio, méthode claire, exercices ciblés. Essai gratuit. Tarif solidaire." />
+  <meta name="robots" content="index, follow" />
+  <style>
+    /* ==========================
+       PALETTE JEUNE & ÉNERGIQUE
+       ========================== */
+    :root{
+      --bg:#0a0f1e;             /* nuit bleutée */
+      --bg-2:#0e1326;            /* variation */
+      --glass:#0b1224cc;         /* panel */
+      --text:#e6edf6;            /* quasi blanc */
+      --muted:#a7b0c0;           /* gris bleuté */
+      --accent:#7c3aed;          /* violet */
+      --accent-2:#06b6d4;        /* cyan */
+      --accent-3:#a3e635;        /* lime */
+      --line:#1f2a44;            /* bordures */
+    }
+
+    /* RESET */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 90% -10%, #1a1442 0%, #0a0f1e 40%, #070a16 100%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:1100px;margin:0 auto;padding:clamp(16px,3vw,32px)}
+
+    /* TOP BAR */
+    header.site{position:sticky;top:0;background:linear-gradient(180deg,#0a0f1ee6,#0a0f1ea6);backdrop-filter:saturate(160%) blur(8px);border-bottom:1px solid var(--line);z-index:50}
+    header .inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:conic-gradient(from 180deg at 50% 50%, var(--accent) 0deg, var(--accent-2) 160deg, var(--accent-3) 300deg, var(--accent) 360deg);box-shadow:0 0 28px #7c3aed44 inset, 0 8px 28px #06b6d433}
+    .logo b{font-size:22px;filter:drop-shadow(0 2px 8px #0008)}
+    .brand b{font-weight:800;font-size:18px;letter-spacing:.2px}
+
+    /* BUTTONS */
+    .cta{display:inline-block;padding:12px 18px;border-radius:14px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#0b0f19;font-weight:800;box-shadow:0 10px 22px #06b6d428,0 0 0 1px #000 inset;transition:transform .08s ease, filter .2s ease}
+    .cta:hover{transform:translateY(-1px);filter:saturate(120%)}
+    .ghost{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:14px;padding:11px 18px}
+
+    /* HERO */
+    .hero{padding:48px 0}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.hero{padding:28px 0}}
+    h1{font-size:clamp(28px,4.2vw,52px);line-height:1.15;margin:0 0 12px}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:14px;background:#0a0f1e}
+    .lead{font-size:clamp(16px,1.6vw,20px);color:#cbd5e1;margin:10px 0 18px}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+    .badge{font-size:12px;border:1px solid var(--line);color:#d9e2ef;border-radius:999px;padding:6px 10px;background:#0e1430aa;display:inline-flex;align-items:center;gap:6px}
+
+    /* HERO CARD (FORM) */
+    .hero-card{background:linear-gradient(160deg,#0c1228,#0a0f1e 60%);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 10px 40px #0008}
+    .hero-card .panel{background:var(--glass);border:1px solid var(--line);border-radius:14px;padding:18px}
+
+    /* SECTIONS */
+    section{padding:48px 0;border-top:1px solid var(--line)}
+    h2{font-size:clamp(22px,3vw,34px);margin:0 0 10px}
+    .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){.cols{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg,#0b1224,#0a0f1e);border:1px solid var(--line);border-radius:16px;padding:18px}
+    .card h3{margin-top:0}
+
+    /* PRICING */
+    .pricing{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width:900px){.pricing{grid-template-columns:1fr}}
+    .price{background:linear-gradient(180deg,#0b1224 0%, #0a0f1e 100%);border:1px solid var(--line);border-radius:16px;padding:22px}
+    .price .amount{font-size:40px;font-weight:900;background:linear-gradient(90deg,var(--accent-3),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .note{color:#aab4c6;font-size:14px}
+
+    /* FAQ */
+    details{background:#0b1224;border:1px solid var(--line);border-radius:12px;padding:14px}
+    details+details{margin-top:10px}
+    summary{cursor:pointer;font-weight:700}
+
+    /* FLOATING BAR */
+    .floatbar{position:sticky;bottom:0;inset-inline:0;background:#0a0f1eec;backdrop-filter:saturate(140%) blur(8px);border-top:1px solid var(--line)}
+    .floatbar .inner{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 0}
+
+    /* FORM */
+    form{display:grid;gap:10px}
+    label{font-size:13px;color:#cbd5e1}
+    input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0a0f1e;color:var(--text)}
+
+    /* UTILITIES */
+    .muted{color:var(--muted)}
+    .mini{font-size:12px;color:#a7b0c0}
+    .center{text-align:center}
+
+    /* FUN MICRO-ANIMS */
+    @keyframes pulseGlow{0%{box-shadow:0 0 0 0 #a3e63533}70%{box-shadow:0 0 0 16px #a3e63500}100%{box-shadow:0 0 0 0 #a3e63500}}
+    .pulse{animation:pulseGlow 2.2s infinite}
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="container inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><b>π</b></div>
+        <div>
+          <b>Maths en Visio</b><br>
+          <span class="mini">Spécial lycéens • Tarif solidaire</span>
+        </div>
+      </div>
+      <nav>
+        <a class="cta ghost" href="#programme">Méthode</a>
+        <a class="cta" href="#rdv">Essai gratuit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container grid">
+        <div>
+          <span class="eyebrow" aria-label="Expérience">🎧 Adapté aux lycéens • 🎯 Objectif bac</span>
+          <h1>Progresse en maths <em>vite et bien</em> en visio</h1>
+          <p class="lead">Seconde, Première, Terminale (Spé & Maths compl.). Explications claires, exercices ciblés, astuces d'examen, suivi rapide sur mobile.</p>
+          <div class="badges" role="list" aria-label="Points forts">
+            <span class="badge">⏱️ Sessions 60–90 min</span>
+            <span class="badge">📱 Docs & fiches partagés</span>
+            <span class="badge">💬 Feedback après chaque séance</span>
+            <span class="badge">🗓️ Soirs & week-end</span>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="cta pulse" href="#rdv">Réserver l'essai 30 min</a>
+            <a class="cta ghost" href="#programme">Voir comment ça marche</a>
+          </div>
+          <p class="mini" style="margin-top:8px">France métropolitaine (UTC+1/+2) • Places limitées • Facture possible</p>
+        </div>
+        <aside class="hero-card">
+          <div class="panel">
+            <h3 style="margin-top:0">Recevoir une proposition</h3>
+            <p class="muted">Dis-moi ton niveau, tes objectifs et tes créneaux préférés.</p>
+            <form id="lead" action="https://formsubmit.co/contact@rv2tlse.com" method="POST">
+              <div class="inline" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div>
+                  <label for="parent">Nom du parent</label>
+                  <input required id="parent" name="parent" placeholder="Dupont" />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input required id="email" name="email" type="email" placeholder="nom@exemple.fr" />
+                </div>
+              </div>
+              <div class="inline" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div>
+                  <label for="eleve">Prénom de l'élève</label>
+                  <input id="eleve" name="eleve" placeholder="Léna" />
+                </div>
+                <div>
+                  <label for="niveau">Niveau</label>
+                  <select id="niveau" name="niveau">
+                    <option>Seconde</option>
+                    <option>Première – tronc commun</option>
+                    <option>Première – spécialité</option>
+                    <option>Terminale – spécialité</option>
+                    <option>Terminale – Maths complémentaires</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="objectif">Objectif principal</label>
+                <input id="objectif" name="objectif" placeholder="Ex: +3 pts au prochain trimestre" />
+              </div>
+              <div>
+                <label for="message">Message (facultatif)</label>
+                <textarea id="message" name="message" rows="3" placeholder="Chapitres difficiles, DS, examens…"></textarea>
+              </div>
+              <input type="hidden" name="source" value="Google Ads" />
+              <!-- Formsubmit options: replace email in action above -->
+              <input type="hidden" name="_subject" value="Nouvelle demande – Cours de maths (lycéens)">
+              <input type="hidden" name="_template" value="table">
+              <input type="text" name="_honey" style="display:none">
+              <input type="hidden" name="_captcha" value="false">
+              <!-- Redirection après envoi : remplace l'URL par ta page de remerciement -->
+              <!-- Pas de redirection désirée -->
+              <button class="cta" type="submit">Envoyer</button>
+              <p class="mini">En soumettant, vous acceptez d'être recontacté(e) par email.</p>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROGRAMME / MÉTHODE -->
+    <section id="programme">
+      <div class="container">
+        <h2>Une méthode claire, testée et motivante</h2>
+        <div class="cols">
+          <div class="card">
+            <h3>1) Bilan rapide</h3>
+            <p>On repère les points forts/faiblesses et on pose un mini-plan sur 4–6 semaines.</p>
+          </div>
+          <div class="card">
+            <h3>2) Explications concrètes</h3>
+            <p>Exemples, astuces, erreurs fréquentes. Je montre la rédaction attendue.</p>
+          </div>
+          <div class="card">
+            <h3>3) Entraînement ciblé</h3>
+            <p>Exos progressifs, corrections commentées, temps de parole équilibré.</p>
+          </div>
+          <div class="card">
+            <h3>4) Feedback utile</h3>
+            <p>Retour après chaque séance (+ message parents si besoin).</p>
+          </div>
+          <div class="card">
+            <h3>5) Ressources partagées</h3>
+            <p>Fiches récap, sujets type bac, checklists de chapitre sur mobile.</p>
+          </div>
+          <div class="card">
+            <h3>6) Rythme flexible</h3>
+            <p>Soirs, week‑ends, intensifs pendant vacances. Annulation ≤ 24h.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARIFS -->
+    <section id="tarifs">
+      <div class="container">
+        <h2>Tarif solidaire & packs</h2>
+        <div class="pricing">
+          <div class="price">
+            <h3>Tarif solidaire</h3>
+            <p class="amount">à partir de 25€ / h</p>
+            <p class="note">Selon situation (quotient, bourse, volume). Essai 30 min offert.</p>
+            <ul>
+              <li>Sans engagement après l'essai</li>
+              <li>Facture possible</li>
+            </ul>
+            <a class="cta" href="#rdv">Vérifier mon éligibilité</a>
+          </div>
+          <div class="price">
+            <h3>Packs progression</h3>
+            <p class="amount">10h • 20h • 30h</p>
+            <p class="note">Remise progressive, séances 60–90 min, suivi parent inclus.</p>
+            <ul>
+              <li>Plan de cours personnalisé</li>
+              <li>Ressources partagées</li>
+              <li>Préparation DS & bac</li>
+            </ul>
+            <a class="cta ghost" href="#contact">Demander un devis</a>
+          </div>
+        </div>
+        <p class="mini">* Tarifs confirmés après l'appel d'orientation et le bilan initial.</p>
+      </div>
+    </section>
+
+    <!-- TÉMOIGNAGES -->
+    <section id="temoignages">
+      <div class="container">
+        <h2>Ils en parlent</h2>
+        <div class="cols">
+          <div class="card">
+            <p>« De 8 à 14 de moyenne en un trimestre. »</p>
+            <p class="mini">Parent – Première</p>
+          </div>
+          <div class="card">
+            <p>« Méthodes claires et ciblées pour le bac. »</p>
+            <p class="mini">Élève – Terminale Spé</p>
+          </div>
+          <div class="card">
+            <p>« Retours réguliers, très pro. »</p>
+            <p class="mini">Parent – Seconde</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RDV / CONTACT -->
+    <section id="rdv">
+      <div class="container">
+        <h2>Réserver un appel (gratuit)</h2>
+        <p class="muted">Choisis un créneau de 15 minutes pour caler objectifs et planning.</p>
+        <div class="card center">
+          <a class="cta" href="https://calendly.com/rv2tlse-marchiani" target="_blank" rel="noopener">Ouvrir le calendrier</a>
+          <p class="mini">Ou contacte‑moi : <a href="mailto:contact@rv2tlse.com">contact@rv2tlse.com</a> • <a href="tel:+33607680190">+33 6 07 68 01 90</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="card">Email : <a href="mailto:contact@rv2tlse.com">contact@rv2tlse.com</a><br>WhatsApp : <a href="https://wa.me/33607680190" target="_blank" rel="noopener">+33 6 07 68 01 90</a></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="floatbar">
+    <div class="container inner">
+      <span class="mini">Essai 30 min offert</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a class="cta" href="#rdv">Réserver</a>
+        <a class="cta ghost" href="#programme">Voir la méthode</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="mini">© <span id="y"></span> – Cours de maths en visio • France. Mentions légales – Politique de confidentialité.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Feedback visuel rapide à l'envoi du formulaire (sites statiques)
+    const form = document.getElementById('lead');
+if(form){
+  form.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    let status = form.querySelector('#status');
+    if(!status){
+      status = document.createElement('div');
+      status.id = 'status';
+      status.className = 'mini';
+      status.style.marginTop = '8px';
+      status.setAttribute('aria-live','polite');
+      form.appendChild(status);
+    }
+    status.style.display='block';
+    status.textContent = 'Envoi en cours…';
+    if(btn) btn.disabled = true;
+    try{
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if(res.ok){
+        status.textContent = 'Merci ! Votre demande a bien été envoyée.';
+        form.reset();
+      }else{
+        status.textContent = 'Oups, l’envoi a échoué. Réessayez ou écrivez à contact@votre-domaine.fr.';
+      }
+    }catch(err){
+      status.textContent = 'Impossible d’envoyer pour le moment. Vérifiez votre connexion.';
+    }finally{
+      if(btn) btn.disabled = false;
+    }
+  });
+}
+
+// Mini tracking anonyme (sessionStorage)
+function track(label){
+  if(!window.sessionStorage) return;
+  const k = 'mathtutor-events';
+  const data = JSON.parse(sessionStorage.getItem(k) || '{}');
+  data[label] = (data[label]||0) + 1;
+  sessionStorage.setItem(k, JSON.stringify(data));
+}
+document.querySelectorAll('a.cta').forEach(a=>a.addEventListener('click',()=>track('cta')));
+  </script>
+</body>
+</html>
